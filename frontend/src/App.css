@@ -1413,6 +1413,9 @@ h2 {
     border-radius: 15px;
   }
 
+  .thankyou {
+    margin: 2rem;
+  }
 
 @media(max-width: 1300px) {
  * {

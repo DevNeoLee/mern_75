@@ -34,7 +34,7 @@ export default function TheEnd() {
             <img src="/logo_4.png" />
           </div>
           {transition((style, item) =>
-            <animated.h2 style={style}>Thank you </animated.h2>
+            <animated.h2 style={style} className="thankyou">Thank you </animated.h2>
           )}
         </div>
         {transition2((style, item) =>
@@ -43,9 +43,9 @@ export default function TheEnd() {
             <p>
               We hope this exercise brought a chance to learn more about flood risk.</p>
             <p> </p>
+            <Link to="/thexit"><Button size="lg" style={{ marginTop: "1rem" }}>Exit</Button></Link>
           </animated.div>
         )}
-        <Link to="/thexit"><Button size="lg">Exit</Button></Link>
       </Form>
     </div>
   );
