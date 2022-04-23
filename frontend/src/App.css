@@ -287,11 +287,7 @@ h2 {
   transition: 450ms;
 }
 
-@media (max-width: 600px) {
-  .form {
-    width: 350px;
-  }
-}
+
 
 .formGeneral {
   margin: 1rem;
@@ -329,6 +325,10 @@ h2 {
 .personIntro {
   position: relative;
   cursor: pointer;
+}
+
+.personIntro img {
+  width: 150px;
 }
 
 .heartRole {
@@ -501,6 +501,7 @@ h2 {
 .main {
     max-width: 1920px;
     max-height: 946px;
+    min-height: 100vh;
     height: 100vh;
     /* background-color: #1e90ff; */
     margin: 0rem auto;
@@ -519,6 +520,7 @@ h2 {
   /* margin: 0 1rem; */
   max-width: 1432px;
   max-height: 930px;
+  min-height: 100vh;
   width: 100vw;
   height: 100vh;
   padding: 1rem;
@@ -539,6 +541,7 @@ h2 {
   transition: 250ms ease-in-out;
   /* background-color: lightcoral; */
   padding: 1rem;
+
 }
 
 .roleframe {
@@ -636,6 +639,7 @@ h2 {
   background-color: var(--ericacolor);
   border-radius: 0 10px 10px 10px;
   padding-left: 1rem;
+  /* justify-content: space-between; */
 }
 
 .leftContainer {
@@ -757,10 +761,6 @@ h2 {
   color: #F1F0F0;
   z-index: 3;
 }
-
-
-
-
 
 .cloudRain {
   /* background-color: #2ebe7e; */
@@ -968,7 +968,7 @@ h2 {
 
 .gameBlock5 {
   background-color: var(--normancolor);  
-  height: 250px;
+  height: 245px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -978,10 +978,10 @@ h2 {
 .titleCoverupNorman {
   background-color: var(--normancolor);
   width: 120px;
-  height: 23px;
+  height: 21px;
   position: absolute;
   left: 35px;
-  top: 28px;
+  top: 27px;
 }
 
 .titleCoverupErica {
@@ -994,30 +994,60 @@ h2 {
 }
 
 .gameBlock6 {
+  /* background-color: blue; */
   display: flex;
-  /* background-color: lightcoral; */
-  height: 270px;
-  margin-left: 100px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  /* height: 270px; */
+  /* margin-left: 100px; */
 }
 
-.ericaForm1,
-.ericaForm2 {
+.ericaform {
   width: 500px;
-  background-color: var(--ericacolor);
-  padding: 0.5rem;
+  /* background-color: var(--ericacolor); */
+  /* padding: 1rem 5rem; */
+  /* border: 1px solid gray; */
+
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin: 0 auto;
 }
 
-.ericaForm1 h3,
-.ericaForm2 h3 {
+.ericaform h3 {
   color: white;
   text-align: center;
-  /* padding: 0;
-  margin: 0; */
 }
 
-.ericaForm2 {
-  border-radius: 0 15px 15px 0;
-  margin-left: 30px;
+.ericaform label {
+  color: white;
+  font-size: 1.2rem;
+}
+
+#erica_form_section1,
+#erica_form_section2,
+#erica_form_section3 {
+    padding: 1rem;
+    background-color: whtie;
+    height: 200px;
+}
+
+.ericaFormInsideSection {
+  display: flex;
+}
+
+.ericaFormInsideWrapper {
+  /* background-color: lightblue; */
+  display: flex;
+  width: 800px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  height: 240px;
 }
 
 .peteColor {
@@ -1026,6 +1056,7 @@ h2 {
 
 .ericaColor {
   background-color: var(--ericacolor);
+    /* background-color: #2ebe7e; */
 }
 
 .normanInGame {
@@ -1035,6 +1066,16 @@ h2 {
 }
 
 .normanInGame img {
+  width: 100%;
+}
+
+.ericaInGame {
+  width: 190px;
+  /* background-color: lightcoral; */
+  margin: 0 0 30px 10px;
+}
+
+.ericaInGame img {
   width: 100%;
 }
 
@@ -1052,6 +1093,7 @@ h2 {
   /* border: 2px solid rgb(179, 179, 179, 0.5); */
     box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 20px;
   border-radius: 15px;
+  background-color: white;
 }
 
 .gameQuestion {
@@ -1362,12 +1404,282 @@ h2 {
   color: #002c71;
 }
 
-/* @media(max-width: 1355px) {
-  * {
-    background-color: lightblue;
+  .gamelogo {
+    display: none;
+  }
+
+  .riskInfo img{
+    width: 400px;
+    border-radius: 15px;
+  }
+
+
+@media(max-width: 1300px) {
+ * {
+   /* background-color: lightcoral; */
+ }
+
+  .leftContainer {
+    /* background-color: yellow; */
+    width: 800px;
+    height: 719px;
+
+    display: none;
+  }
+
+  .gameRound {
+    width: 350px;
+    height: 130px;
+
+    left: 500px;
+    top: 50px;
+    width: 250px;
+  }
+
+  .gameRound h1 {
+    font-size: 30px;
+    height: initial;
+    width: initial;
   }
 
   .gameBlockContainer {
-      flex-direction: row-reverse;
+    /* background-color: lightslategray; */
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
   }
-} */
+
+  .gameBlock10 {
+    display: none;
+  }
+}
+
+@media(max-width: 1050px) {
+  * {
+    /* background-color: lightgreen; */
+  }
+
+  .ericaFormInsideSection {
+    flex-direction: column;
+    height: 100%;
+    justify-content: flex-start;
+    /* margin: 3rem 3rem; */
+    padding: 12px;
+    margin: 0;
+    /* background-color: lightpink; */
+  }
+
+  #erica_form_section1 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  #erica_form_section2 {
+    margin-top: 0rem;
+    padding-top: 0rem;
+  }
+
+  .ericaform {
+    width: 100%;
+  }
+
+  .ericaFormInsideWrapper {
+    /* background-color: lightblue; */
+    display: flex;
+    width: 600px;
+  }
+
+  .bottomContainerErica {
+    padding-left: 0rem;
+  }
+}
+
+@media(max-width: 800px) {
+  * {
+    /* background-color: lightcoral; */
+  }
+
+  .gameRound {
+    height: 100px;
+
+    left: 470px;
+    top: 50px;
+    width: 200px;
+  }
+
+  .gameRound h1 {
+    font-size: 23px;
+    height: initial;
+    width: initial;
+  }
+
+  .gameBlockContainer {
+    /* background-color: lightslategray; */
+    display: block;
+    margin: 0 auto;
+    justify-content: initial;
+    align-items: initial;
+  
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow: visible;
+  }
+
+  .phonebox {
+    display: none;
+  }
+
+  .comingMessage {
+    margin-left: 0px;
+    padding: 1rem 2rem;
+    top: 20px;
+    left: 15px;
+    width: 455px;
+    height: 200px;
+  }
+
+  .messageBox {
+    width: 100px;
+    height: 100px;
+  }
+
+      .ericaInGame {
+        width: 120px;
+        /* background-color: lightcoral; */
+        margin: 0 0 30px 10px;
+      }
+      
+      .ericaInGame img {
+        width: 100%;
+      }
+
+      #erica_form_section1,
+      #erica_form_section2,
+      #erica_form_section3 {
+        padding: 0.1rem;
+
+      }
+
+}
+
+@media(max-width: 700px) {
+  * {
+    /* background-color: lightblue; */
+  }
+
+  .gameUpperForm {
+    padding: 0rem;
+  }
+
+  .welcomeParagraph {
+      width: 500px;
+      padding: 3rem 1rem 1rem 1rem;
+  }
+
+  .personIntro {
+      padding: 1rem 0.1rem 0.5rem 0.1rem;
+    }
+
+  .gamelogo {
+    display: none;
+  }
+
+  .roleframe {
+    padding: 3rem 2rem 1rem 2rem;
+    width: 450px;
+    margin: 0 auto;
+  }
+
+    .riskInfo img {
+      width: 350px;
+    }
+
+    .welcome {
+      width: 500px;
+    }
+
+    .welcomeParagraph {
+        width: 420px;
+    }
+
+    h2 {
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .personIntro img {
+      width: 100px;
+    }
+
+    .heartIntro,
+    .heartIntro2,
+    .heartIntro3 {
+      display: none;
+    }
+
+      .gameRound {
+        width: 300px;
+        height: 55px;
+      
+        left: 0px;
+        top: 400px;
+        width: 140px;
+      }
+
+      .gameRound h1 {
+        font-size: 18px;
+      }
+
+      .comingMessage {
+        padding: 1rem 2rem;
+        border-radius: 15px;
+        top: 10px;
+        left: 0px;
+        width: 390px;
+        height: 220px;
+      }
+
+      .ericaFormInsideWrapper {
+        width: 100%;
+      }
+}
+
+
+@media(max-width: 630px) {
+  * {
+    /* background-color: lightcoral; */
+  }
+
+  .general {
+    /* background-color: lightgreen; */
+    width: 550px;
+  }
+
+  .comingMessage {
+    width: 95%;
+
+  }
+
+  .comingMessage span {
+    font-size: 1.1rem;
+    width: 95%;
+    margin: 0px;
+    padding: 0px;
+  }
+}
+
+@media(max-width: 503px) {
+  * {
+    /* background-color: lightcoral; */
+  }
+
+  .general {
+    /* background-color: red; */
+    width: 550px;
+  }
+}

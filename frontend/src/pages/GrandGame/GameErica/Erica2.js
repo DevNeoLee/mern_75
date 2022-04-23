@@ -250,24 +250,23 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                     </div>
                 </div>
                 <div className="gameProgressBlockErica">
-                    <ProgressBar now={ericaHealth} style={{ fontSize: "1.1rem", height: "27px", width: "809px", backgroundColor: "black", borderRadius: "5px 2px 0px 0"}} variant="primary" label={`Score: ${ericaHealth} of 100`} />
+                    <ProgressBar now={ericaHealth} style={{ fontSize: "1.1rem", height: "27px", width: "465px", backgroundColor: "black", borderRadius: "5px 5px 5px 0" }} variant="primary" label={`Score: ${ericaHealth} of 100`} />
                     <div className="heartNorman"><HeartFill size={23} color="red" /></div>
                     <div className="titleCoverupErica"></div>
                 </div>
                 <div className="bottomContainerErica">
                     <div className="gameBlock5 ericaColor">
-                        <div className="normanInGame">
+                        <div className="ericaInGame">
                             <img src="/erica.png" alt="role_person_image" />
                         </div>
                     </div>
                     <div className="gameBlock6">
-                        <div className="ericaForm1">
-                            <Form className="" onSubmit={ericaSendMessage}>
-                                <h3>Send Alert to Normans</h3>
-                                <div className="">
-                                    <Form.Group>
-                                        {/* <Form.Label>To Normans Label</Form.Label> */}
-                                        <Form.Select aria-label="Default select example" onChange={handleChange2} style={{ marginBottom: "0.5rem"}}>
+                        <div className="ericaform">
+                            <Form className="ericaFormInsideWrapper" onSubmit={ericaSendMessage}>
+                                <div className="ericaFormInsideSection">
+                                    <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section1">
+                                        <Form.Label>Level of Flood Warning</Form.Label>
+                                        <Form.Select aria-label="Default select example" onChange={handleChange2}>
                                             <option>Level of Flood Warning</option>
                                             <option value="1">Safe</option>
                                             <option value="2">Caution</option>
@@ -275,32 +274,18 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                                             <option value="4">Evacuate immediately</option>
                                         </Form.Select>
                                     </Form.Group>
-                                    <Form.Group className="mb-3" controlId="exampleTextAreaErica">
-                                        {/* <Form.Label>Custom Message(type below)</Form.Label> */}
+
+                                    <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section2">
+                                        <Form.Label>Message to Power Factory</Form.Label>
                                         <Form.Control as="textarea" rows={3} onChange={handleChange} />
                                     </Form.Group>
-                                    <Button type="submit">Send Message</Button>
                                 </div>
-                            </Form>
-                        </div>
-                        <div className="ericaForm2">
-                            <Form className="" onSubmit={ericaSendMessage2}>
-                                <h3>Send Alert to Pete</h3>
-                                <Form.Group>
-                                    {/* <Form.Label>To Pete Label</Form.Label> */}
-                                    <Form.Select aria-label="Default select example" onChange={handleChange4} style={{ marginBottom: "0.5rem" }}>
-                                        <option>Level of Flood Warning</option>
-                                        <option value="1">Safe</option>
-                                        <option value="2">Caution</option>
-                                        <option value="3">Evacuation recommended</option>
-                                        <option value="4">Evacuate immediately</option>
-                                    </Form.Select>
+
+                                <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section3">
+                                    <Form.Label>Message to Citizen</Form.Label>
+                                    <Form.Control as="textarea" rows={3} onChange={handleChange} className="mb-3"/>
+                                    <Button type="submit">Send Message to the City</Button>
                                 </Form.Group>
-                                <Form.Group className="mb-3" controlId="exampleTextAreaErica">
-                                    {/* <Form.Label>Custom Message(type below)</Form.Label> */}
-                                    <Form.Control as="textarea" rows={3} onChange={handleChange3} />
-                                </Form.Group>
-                                <Button type="submit">Send Message</Button>
                             </Form>
                         </div>
                     </div>

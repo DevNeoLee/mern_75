@@ -63,17 +63,17 @@ export default function Instruction({giveRoleRandomly, setRole}) {
               been randomly assigned to one of the following three different roles.</p>
             <div className="people">
               <div className="personIntro" onClick={() => handleClick('Erica')}>
-                <img src="erica.png" alt="erica photo" width="150px" /> 
+                <img src="erica.png" alt="erica photo" /> 
                 <ProgressBar now={100} animated variant="primary" />
                 <div className="heartIntro"><HeartFill size={27} color="red" /></div>
               </div>
               <div className="personIntro" onClick={() => handleClick('Pete')}>
-                <img src="pete.png" alt="pete photo" width="150px" />
+                <img src="pete.png" alt="pete photo" />
                 <ProgressBar now={100} animated variant="primary" />
                 <div className="heartIntro2"><HeartFill size={27} color="red" /></div>
               </div>
               <div className="personIntro" onClick={() => handleClick(normans[Math.floor(Math.random() * normans.length)])}>
-                <img src="norman.png" alt="norman photo" width="150px" />
+                <img src="norman.png" alt="norman photo" />
                 <ProgressBar now={100} animated variant="primary" />
                 <div className="heartIntro3"><HeartFill size={27} color="red" /></div>
               </div>

@@ -305,7 +305,7 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
                         }
                     </div>
                     <div className="gameProgressBlock">
-                        <ProgressBar now={peteHealth} style={{ fontSize: "1.1rem", height: "27px", borderRadius: "5px 5px 0 0" }} variant="primary" label={`Score: ${peteHealth} of 100`} />
+                        <ProgressBar now={peteHealth} style={{ fontSize: "1.1rem", height: "27px", borderRadius: "5px 5px 0 0"}} variant="primary" label={`Score: ${peteHealth} of 100`} />
                         <div className="heartNorman"><HeartFill size={23} color="red" /></div>
                         <div className="titleCoverupNorman peteColor"></div>
                     </div>

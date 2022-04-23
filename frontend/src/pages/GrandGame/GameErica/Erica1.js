@@ -40,7 +40,7 @@ export default function Erica1() {
             {transition2((style, item) =>
                 <animated.div style={style} className="roleframe weatherMargin">
                     <div className="riskInfo">
-                        <img src="/weathernews.jpg" width="400px" />
+                        <img src="/weathernews.jpg" />
                     </div>
                     <p>You see weather news.</p>
                     <p>You learn that a storm is fast approaching

@@ -65,7 +65,7 @@ export default function GrandGame() {
 
     }, [ericaMessageForNorman, ericaMessageForPete])
 
-    useEffect(()=>{
+    const connectToSocket = () => {
         //////Socket///////////////////////////////////////////////////////////////////
         const socket = io()
         setSocket(socket)
@@ -78,7 +78,12 @@ export default function GrandGame() {
         socket.on("left", () => {
             console.log("someone left the room")
         })
+    }
 
+    useEffect(()=>{
+   
+        connectToSocket()
+        
         return () => {
             socket.close()
             console.log("socket closed: ")
