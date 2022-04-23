@@ -28,9 +28,9 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
     //     setGraphData([
     //               {
     //             name: 'normanHouse1',
-    //             "current water level": 5,
-    //             "level estimate within an hour": 8,
-    //             electricity: true
+    //             "Current Water Depth": 5,
+    //             "Depth Estimate within an Hour": 8,
+    //             Electricity: true
     //         },
     //     ])
     // }
@@ -39,7 +39,7 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
 
         let houseChartdata = data[`round${round}`][3];
 
-        houseChartdata["level estimate within an hour"] = houseChartdata["level estimate within an hour"] - houseChartdata["current water level"]
+        houseChartdata["Depth Estimate within an Hour"] = houseChartdata["Depth Estimate within an Hour"] - houseChartdata["Current Water Depth"]
         return houseChartdata;
     }
 
@@ -92,9 +92,9 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
                 // getHouseChartData(),
                 // getHouseChartData()
                 // {
-                //     name: 'route1',
-                //     "current water level": 8,
-                //     "level estimate within an hour": 11,
+                //     name: 'Route1',
+                //     "Current Water Depth": 8,
+                //     "Depth Estimate within an Hour": 11,
                 //     congestion: false
                 // }
             ]
@@ -122,7 +122,7 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
 
         const houseChartdata = data[`round${round}`][3];
 
-        return houseChartdata["level estimate within an hour"] = houseChartdata["level estimate within an hour"] - houseChartdata["current water level"]
+        return houseChartdata["Depth Estimate within an Hour"] = houseChartdata["Depth Estimate within an Hour"] - houseChartdata["Current Water Depth"]
     }
 
     return (
@@ -154,15 +154,15 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
                                 <CartesianGrid strokeDasharray="3 3" />
                                 <XAxis dataKey="name" tick={false} />
                                 <YAxis
-                                    label={{ value: "Rain Depth", angle: -90, position: 'insideLeft' }}
+                                    label={{ value: "Water Depth", angle: -90, position: 'insideLeft' }}
                                     tick={{ fontSize: 10 }}
                                     // width={100}   
                                     unit="cm"
                                     domain={[0, 40]} />
                                 {/* <Tooltip /> */}
                                 <Legend />
-                                <Bar dataKey="current water level" fill="#8884d8" />
-                                <Bar dataKey="level estimate within an hour" fill="#82ca9d" />
+                                <Bar dataKey="Current Water Depth" fill="#8884d8" />
+                                <Bar dataKey="Depth Estimate within an Hour" fill="#82ca9d" />
                             </BarChart>
                         </div>
                     </div>
@@ -183,12 +183,12 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
                                 <XAxis dataKey="name" tick={false} />
                                 <YAxis unit="cm"
                                     domain={[0, 300]}
-                                    label={{ value: "Rain Depth", angle: -90, position: 'insideLeft' }}
+                                    label={{ value: "Water Depth", angle: -90, position: 'insideLeft' }}
                                     tick={{ fontSize: 10, bottom: 10 }}
                                     dy={-6} />
                                 {/* <Tooltip /> */}
-                                <Area type="monotone" dataKey="current water level" stackId="1" stroke="#8884d8" fill="#8884d8" />
-                                <Area type="monotone" dataKey="level estimate within an hour" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
+                                <Area type="monotone" dataKey="Current Water Depth" stackId="1" stroke="#8884d8" fill="#8884d8" />
+                                <Area type="monotone" dataKey="Depth Estimate within an Hour" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
                             </AreaChart>
                         </div>
                         <div className="powerStatusPete">
@@ -244,48 +244,48 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
 
 
                             <div className="route1_tooltip">
-                                <h3>route 1</h3>
-                                <p>current water level: <span>{data.round1[3]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[3]["level estimate within an hour"]} cm</span></p>
+                                <h3>Route 1</h3>
+                                <p>Current Water Depth: <span>{data.round1[3]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[3]["Depth Estimate within an Hour"]} cm</span></p>
                                 <p> congestion: <span>No</span>{ }</p>
                             </div>
                             <div className="route2_tooltip">
-                                <h3>route 2</h3>
-                                <p>current water level: <span>{data.round1[4]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[4]["level estimate within an hour"]} cm</span></p>
+                                <h3>Route 2</h3>
+                                <p>Current Water Depth: <span>{data.round1[4]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[4]["Depth Estimate within an Hour"]} cm</span></p>
                                 <p> congestion: <span>No</span>{ }</p>
                             </div>
                             <div className="route3_tooltip">
-                                <h3>route 3</h3>
-                                <p>current water level: <span>{data.round1[5]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[5]["level estimate within an hour"]} cm</span></p>
+                                <h3>Route 3</h3>
+                                <p>Current Water Depth: <span>{data.round1[5]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[5]["Depth Estimate within an Hour"]} cm</span></p>
                                 <p> congestion: <span>No</span>{ }</p>
                             </div>
 
                             <div className="normanHouse_tooltipA">
                                 <h3>Norman A House</h3>
-                                <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                <p>electricity: <span>ON</span>{ }</p>
+                                <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                <p>Electricity: <span>ON</span>{ }</p>
                             </div>
                             <div className="normanHouse_tooltipB">
                                 <h3>Norman B House</h3>
-                                <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                <p>electricity: <span>ON</span>{ }</p>
+                                <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                <p>Electricity: <span>ON</span>{ }</p>
                             </div>
                             <div className="normanHouse_tooltipC">
                                 <h3>Norman C House</h3>
-                                <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                <p>electricity: <span>ON</span>{ }</p>
+                                <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                <p>Electricity: <span>ON</span>{ }</p>
                             </div>
 
                             <div className="peteHouse_tooltip">
                                 <h3>Pete Power House</h3>
-                                <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                <p>electricity: <span>ON</span>{ }</p>
+                                <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                <p>Electricity: <span>ON</span>{ }</p>
                             </div>
                         </div>
                         {

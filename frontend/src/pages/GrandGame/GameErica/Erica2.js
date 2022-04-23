@@ -28,9 +28,9 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
     //     setGraphData([
     //               {
     //             name: 'normanHouse1',
-    //             "current water level": 5,
-    //             "level estimate within an hour": 8,
-    //             electricity: true
+    //             "Current Water Depth": 5,
+    //             "Depth Estimate within an Hour": 8,
+    //             Electricity: true
     //         },
     //     ])
     // }
@@ -39,7 +39,7 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
 
         let houseChartdata = data[`round${round}`][3];
 
-        houseChartdata["level estimate within an hour"] = houseChartdata["level estimate within an hour"] - houseChartdata["current water level"]
+        houseChartdata["Depth Estimate within an Hour"] = houseChartdata["Depth Estimate within an Hour"] - houseChartdata["Current Water Depth"]
         return houseChartdata;
     }
 
@@ -92,9 +92,9 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                 // getHouseChartData(),
                 // getHouseChartData()
                 // {
-                //     name: 'route1',
-                //     "current water level": 8,
-                //     "level estimate within an hour": 11,
+                //     name: 'Route1',
+                //     "Current Water Depth": 8,
+                //     "Depth Estimate within an Hour": 11,
                 //     congestion: false
                 // }
             ]
@@ -122,7 +122,7 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
 
         const houseChartdata = data[`round${round}`][3];
 
-        return houseChartdata["level estimate within an hour"] = houseChartdata["level estimate within an hour"] - houseChartdata["current water level"]
+        return houseChartdata["Depth Estimate within an Hour"] = houseChartdata["Depth Estimate within an Hour"] - houseChartdata["Current Water Depth"]
     }
 
     return (
@@ -155,15 +155,15 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="name" tick={false} />
                                     <YAxis
-                                        label={{ value: "Rain Depth", angle: -90, position: 'insideLeft' }}
+                                        label={{ value: "Water Depth", angle: -90, position: 'insideLeft' }}
                                         tick={{ fontSize: 10 }}
                                         // width={100}   
                                         unit="cm"
                                         domain={[0, 40]} />
                                     {/* <Tooltip /> */}
                                     <Legend />
-                                    <Bar dataKey="current water level" fill="#8884d8" />
-                                    <Bar dataKey="level estimate within an hour" fill="#82ca9d" />
+                                    <Bar dataKey="Current Water Depth" fill="#8884d8" />
+                                    <Bar dataKey="Depth Estimate within an Hour" fill="#82ca9d" />
                                 </BarChart>
                             </div>
                         </div>
@@ -187,48 +187,48 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
 
 
                                 <div className="route1_tooltip">
-                                    <h3>route 1</h3>
-                                    <p>current water level: <span>{data.round1[3]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[3]["level estimate within an hour"]} cm</span></p>
+                                    <h3>Route 1</h3>
+                                    <p>Current Water Depth: <span>{data.round1[3]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[3]["Depth Estimate within an Hour"]} cm</span></p>
                                     <p> congestion: <span>No</span>{ }</p>
                                 </div>
                                 <div className="route2_tooltip">
-                                    <h3>route 2</h3>
-                                    <p>current water level: <span>{data.round1[4]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[4]["level estimate within an hour"]} cm</span></p>
+                                    <h3>Route 2</h3>
+                                    <p>Current Water Depth: <span>{data.round1[4]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[4]["Depth Estimate within an Hour"]} cm</span></p>
                                     <p> congestion: <span>No</span>{ }</p>
                                 </div>
                                 <div className="route3_tooltip">
-                                    <h3>route 3</h3>
-                                    <p>current water level: <span>{data.round1[5]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[5]["level estimate within an hour"]} cm</span></p>
+                                    <h3>Route 3</h3>
+                                    <p>Current Water Depth: <span>{data.round1[5]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[5]["Depth Estimate within an Hour"]} cm</span></p>
                                     <p> congestion: <span>No</span>{ }</p>
                                 </div>
 
                                 <div className="normanHouse_tooltipA">
                                     <h3>Norman A House</h3>
-                                    <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                    <p>electricity: <span>ON</span>{ }</p>
+                                    <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                    <p>Electricity: <span>ON</span>{ }</p>
                                 </div>
                                 <div className="normanHouse_tooltipB">
                                     <h3>Norman B House</h3>
-                                    <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                    <p>electricity: <span>ON</span>{ }</p>
+                                    <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                    <p>Electricity: <span>ON</span>{ }</p>
                                 </div>
                                 <div className="normanHouse_tooltipC">
                                     <h3>Norman C House</h3>
-                                    <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                    <p>electricity: <span>ON</span>{ }</p>
+                                    <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                    <p>Electricity: <span>ON</span>{ }</p>
                                 </div>
 
                                 <div className="peteHouse_tooltip">
                                     <h3>Pete Power House</h3>
-                                    <p>current water level: <span>{data.round1[0]["current water level"]} cm</span></p>
-                                    <p>level estimate within an hour: <span>{data.round1[0]["level estimate within an hour"]} cm</span></p>
-                                    <p>electricity: <span>ON</span>{ }</p>
+                                    <p>Current Water Depth: <span>{data.round1[0]["Current Water Depth"]} cm</span></p>
+                                    <p>Depth Estimate within an Hour: <span>{data.round1[0]["Depth Estimate within an Hour"]} cm</span></p>
+                                    <p>Electricity: <span>ON</span>{ }</p>
                                 </div>
                             </div>
                             {
@@ -268,11 +268,11 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                                     <Form.Group>
                                         {/* <Form.Label>To Normans Label</Form.Label> */}
                                         <Form.Select aria-label="Default select example" onChange={handleChange2} style={{ marginBottom: "0.5rem"}}>
-                                            <option>Level of flood warning</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
+                                            <option>Level of Flood Warning</option>
+                                            <option value="1">Safe</option>
+                                            <option value="2">Caution</option>
+                                            <option value="3">Evacuation recommended</option>
+                                            <option value="4">Evacuate immediately</option>
                                         </Form.Select>
                                     </Form.Group>
                                     <Form.Group className="mb-3" controlId="exampleTextAreaErica">
@@ -289,11 +289,11 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                                 <Form.Group>
                                     {/* <Form.Label>To Pete Label</Form.Label> */}
                                     <Form.Select aria-label="Default select example" onChange={handleChange4} style={{ marginBottom: "0.5rem" }}>
-                                        <option>Level of flood warning</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
+                                        <option>Level of Flood Warning</option>
+                                        <option value="1">Safe</option>
+                                        <option value="2">Caution</option>
+                                        <option value="3">Evacuation recommended</option>
+                                        <option value="4">Evacuate immediately</option>
                                     </Form.Select>
                                 </Form.Group>
                                 <Form.Group className="mb-3" controlId="exampleTextAreaErica">

@@ -2,44 +2,44 @@ export const data = {
     round1: [
         {
             name: 'normanHouse1',
-            "current water level": 5,
-            "level estimate within an hour": 8,
+            "Current Water Depth": 5,
+            "Depth Estimate within an Hour": 8,
             electricity: true
         },
         {
             name: 'normanHouse2',
-            "current water level": 7,
-            "level estimate within an hour": 13,
+            "Current Water Depth": 7,
+            "Depth Estimate within an Hour": 13,
             electricity: true
         },
         {
             name: 'normanHouse3',
-            "current water level": 9,
-            "level estimate within an hour": 14,
+            "Current Water Depth": 9,
+            "Depth Estimate within an Hour": 14,
             electricity: true
         },
         {
-            name: 'route1',
-            "current water level": 7,
-            "level estimate within an hour": 10,
+            name: 'Route1',
+            "Current Water Depth": 7,
+            "Depth Estimate within an Hour": 10,
             congestion: false
         },
         {
-            name: 'route2',
-            "current water level": 6,
-            "level estimate within an hour": 11,
+            name: 'Route2',
+            "Current Water Depth": 6,
+            "Depth Estimate within an Hour": 11,
             congestion: false
         },
         {
-            name: 'route3',
-            "current water level": 9,
-            "level estimate within an hour": 12,
+            name: 'Route3',
+            "Current Water Depth": 9,
+            "Depth Estimate within an Hour": 12,
             congestion: false
         },
         {
             name: 'powerstation1',
-            "current water level": 8,
-            "level estimate within an hour": 14,
+            "Current Water Depth": 8,
+            "Depth Estimate within an Hour": 14,
             electricity: true
         },
 
@@ -47,44 +47,44 @@ export const data = {
     round2: [
         {
             name: 'normanHouse1',
-            "current water level": 10,
-            "level estimate within an hour": 17,
+            "Current Water Depth": 10,
+            "Depth Estimate within an Hour": 17,
             electricity: true
         },
         {
             name: 'normanHouse2',
-            "current water level": 15,
-            "level estimate within an hour": 20,
+            "Current Water Depth": 15,
+            "Depth Estimate within an Hour": 20,
             electricity: true
         },
         {
             name: 'normanHouse3',
-            "current water level": 16,
-            "level estimate within an hour": 18,
+            "Current Water Depth": 16,
+            "Depth Estimate within an Hour": 18,
             electricity: true
         },
         {
-            name: 'route1',
-            "current water level": 12,
-            "level estimate within an hour": 19,
+            name: 'Route1',
+            "Current Water Depth": 12,
+            "Depth Estimate within an Hour": 19,
             electricity: true
         },
         {
-            name: 'route2',
-            "current water level": 13,
-            "level estimate within an hour": 22,
+            name: 'Route2',
+            "Current Water Depth": 13,
+            "Depth Estimate within an Hour": 22,
             electricity: true
         },
         {
-            name: 'route3',
-            "current water level": 14,
-            "level estimate within an hour": 20,
+            name: 'Route3',
+            "Current Water Depth": 14,
+            "Depth Estimate within an Hour": 20,
             electricity: true
         },
         {
             name: 'powerstation1',
-            "current water level": 16,
-            "level estimate within an hour": 22,
+            "Current Water Depth": 16,
+            "Depth Estimate within an Hour": 22,
             electricity: true
         },
 
@@ -92,44 +92,44 @@ export const data = {
     round3: [
         {
             name: 'normanHouse1',
-            "current water level": 19,
-            "level estimate within an hour": 22,
+            "Current Water Depth": 19,
+            "Depth Estimate within an Hour": 22,
             electricity: true
         },
         {
             name: 'normanHouse2',
-            "current water level": 22,
-            "level estimate within an hour": 26,
+            "Current Water Depth": 22,
+            "Depth Estimate within an Hour": 26,
             electricity: true
         },
         {
             name: 'normanHouse3',
-            "current water level": 20,
-            "level estimate within an hour": 28,
+            "Current Water Depth": 20,
+            "Depth Estimate within an Hour": 28,
             electricity: true
         },
         {
-            name: 'route1',
-            "current water level": 21,
-            "level estimate within an hour": 22,
+            name: 'Route1',
+            "Current Water Depth": 21,
+            "Depth Estimate within an Hour": 22,
             electricity: true
         },
         {
-            name: 'route2',
-            "current water level": 24,
-            "level estimate within an hour": 28,
+            name: 'Route2',
+            "Current Water Depth": 24,
+            "Depth Estimate within an Hour": 28,
             electricity: true
         },
         {
-            name: 'route3',
-            "current water level": 22,
-            "level estimate within an hour": 24,
+            name: 'Route3',
+            "Current Water Depth": 22,
+            "Depth Estimate within an Hour": 24,
             electricity: true
         },
         {
             name: 'powerstation1',
-            "current water level": 24,
-            "level estimate within an hour": 24,
+            "Current Water Depth": 24,
+            "Depth Estimate within an Hour": 24,
             electricity: true
         },
 
@@ -137,44 +137,44 @@ export const data = {
     round4: [
         {
             name: 'normanHouse1',
-            "current water level": 24,
-            "level estimate within an hour": 26,
+            "Current Water Depth": 24,
+            "Depth Estimate within an Hour": 26,
             electricity: true
         },
         {
             name: 'normanHouse2',
-            "current water level": 28,
-            "level estimate within an hour": 30,
+            "Current Water Depth": 28,
+            "Depth Estimate within an Hour": 30,
             electricity: true
         },
         {
             name: 'normanHouse3',
-            "current water level": 30,
-            "level estimate within an hour": 32,
+            "Current Water Depth": 30,
+            "Depth Estimate within an Hour": 32,
             electricity: true
         },
         {
-            name: 'route1',
-            "current water level": 24,
-            "level estimate within an hour": 26,
+            name: 'Route1',
+            "Current Water Depth": 24,
+            "Depth Estimate within an Hour": 26,
             electricity: true
         },
         {
-            name: 'route2',
-            "current water level": 30,
-            "level estimate within an hour": 32,
+            name: 'Route2',
+            "Current Water Depth": 30,
+            "Depth Estimate within an Hour": 32,
             electricity: true
         },
         {
-            name: 'route3',
-            "current water level": 26,
-            "level estimate within an hour": 28,
+            name: 'Route3',
+            "Current Water Depth": 26,
+            "Depth Estimate within an Hour": 28,
             electricity: true
         },
         {
             name: 'powerstation1',
-            "current water level": 26,
-            "level estimate within an hour": 28,
+            "Current Water Depth": 26,
+            "Depth Estimate within an Hour": 28,
             electricity: true
         },
 
