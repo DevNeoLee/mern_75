@@ -1,17 +1,19 @@
 const path = require('path');
 const express = require("express")
-const cors = require('cors');
+const app = express()
 const http = require('http');
+const server = http.createServer(app)
+
+const cors = require('cors');
 
 const instrument = require('@socket.io/admin-ui')
 
-const app = express()
 app.use(cors());
 
-const server = http.createServer(app)
 
-const io = require('socket.io')(server, {
-    serveClient: false })
+const io = require('socket.io')(server, 
+    // { serveClient: false }
+    )
 
 const db = require('./config/keys')
 
@@ -28,26 +30,29 @@ if (process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
     })
 } else {
-    app.get('/', (req, res) => { return res.send("hello world from express")})
+    app.get('/', (req, res) => { 
+        // return res.send("hello world from express")}
+          res.sendFile(__dirname + '/index.html');
+    })
 }
 
-const bodyParser = require('body-parser')
-const game = require("./routes/api/game");
+// const bodyParser = require('body-parser')
+// const game = require("./routes/api/game");
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({extended: false}))
+// app.use(bodyParser.json())
 
-app.use("/api/game", game);
+// app.use("/api/game", game);
 
 
 const port = process.env.PORT || 5000
 
 //helping functions for WS events
-function removeArrayItem(arr, item) {
-    for (var i = arr.length; i--;) {
-        if (arr[i] === item) arr.splice(i, 1);
-    }
-}
+// function removeArrayItem(arr, item) {
+//     for (var i = arr.length; i--;) {
+//         if (arr[i] === item) arr.splice(i, 1);
+//     }
+// }
 
 
 
@@ -77,12 +82,14 @@ io.on("connection", socket => {
             console.log("방들: ", socket.rooms)
             room &&  console.log("몇: ", room.size)
             console.log("사람들: ", io.sockets.adapter.rooms.get('room1').size)
+            console.log('who joined: ', socket.id)
 
         } else {
             socket.join('room2')
             socket.to('room2').emit('welcome')
             console.log("사람들: ", io.sockets.adapter.rooms.get('room1').size)
             console.log('room2 size: ', io.sockets.adapter.rooms.get('room2').size)
+            console.log('who joined: ', socket.id)
 
         }
         console.log("사람들: ", io.sockets.adapter.rooms.get('room1').size)
@@ -91,7 +98,7 @@ io.on("connection", socket => {
 
     socket.on("disconnecting", () => {
         socket.to('room2').emit('leaving')
-        console.log("someone leaving the room")
+        console.log("someone leaving the room", socket.id)
  
         // socket.rooms.forEach(room => {
         //     socket.to(room).emit('leaving')
@@ -101,7 +108,7 @@ io.on("connection", socket => {
 
     socket.on("disconnect", () => {
         socket.to('room2').emit('left')
-        console.log("someone left the room")
+        console.log("someone left the room", socket.id)
 
         // io.sockets.emit('left', () => { console.log('bye bye')})
         // console.log('room2 size: ', io.sockets.adapter.rooms.get('room2').size)

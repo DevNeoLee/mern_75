@@ -6,6 +6,9 @@ import { HeartFill, HospitalFill, HouseFill, Lightning, LightningCharge, Lightni
 import { Form, Button, ProgressBar } from "react-bootstrap";
 
 import Radio from "../../../components/Radio"
+import PetePopup from '../../../components/PetePopup';
+import PeteForm from '../../../components/PeteForm';
+import WaitModalPete from '../../../components/WaitModalPete';
 
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -14,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Pete2({ round, electricity, ericaMessageForNorman, step, normanQuestion, peteHealth }) {
+export default function Pete2({ round, electricity, peteMessageForNorman, step, normanQuestion, peteHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -23,6 +26,12 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
     const [hoverBH, setHoverBH] = useState(false);
     const [graphData, setGraphData] = useState([]);
     const [graphData2, setGraphData2] = useState([]);
+
+    const [popup, setPopup] = useState(false);
+    const [popForm, setPopForm] = useState(false);
+    const [waitPopup, setWaitPopup] = useState(true)
+    const [waitEricaTime, setWaitEricaTime] = useState(true);
+
 
     // const handleMouseEnter1 = () => {
     //     setGraphData([
@@ -34,6 +43,15 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
     //         },
     //     ])
     // }
+
+    const handlePeteForm = () => {
+
+    }
+
+    const handleWaitModal = () => {
+        console.log("wait Modal clicked!")
+        setWaitPopup(false)
+    }
 
     const getHouseChartData = () => {
 
@@ -127,6 +145,10 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
 
     return (
         <>
+            <div className={popup ? `petePopup` : `petePopup petePopClose`}><PetePopup setPopup={setPopup} /></div>
+            <div className={popForm ? `peteForm` : `peteForm peteFormClose`}><PeteForm setPopForm={setPopForm} handlePeteForm={handlePeteForm} /></div>
+            <div className={waitPopup ? `waitModal` : `waitModal waitModalClose`}><WaitModalPete handleWaitModal={handleWaitModal} /></div>
+
             <div className="gameBlockContainer">
                 <div className="leftContainer">
                     <div className="gameBlock3">
@@ -316,14 +338,14 @@ export default function Pete2({ round, electricity, ericaMessageForNorman, step,
                             </div>
                         </div>
                         <div className="gameBlock4 peteColor">
-                            {/* <h2>Message from Emergency Manager, Erica</h2> */}
+                            {/* <h2>Message from Emergency Manager, pete</h2> */}
                             <div className="messageBox">
                                 <div className="phonebox"><img src="/phone_side.png" width="520px" /></div>
                                 <div className="comingMessage">
                                     <div className="alertMessagePete">
-                                        <span>Alert! Message from Erica</span>
+                                        <span>Alert! Message from pete</span>
                                         <p className="">
-                                            {/* {ericaMessageForNorman} */}
+                                            {/* {peteMessageForNorman} */}
                                         </p>
                                     </div>
                                 </div>

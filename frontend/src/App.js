@@ -1,4 +1,3 @@
-
 import Game from "./pages/Game";
 import Game2 from "./pages/Game";
 import Game3 from "./pages/Game";
@@ -14,6 +13,7 @@ import FormPreGame from "./pages/FormPreGame/FormPreGame";
 import FormPostGame from "./pages/FormPostGame/FormPostGame";
 
 import GrandGame from "./pages/GrandGame/GrandGame";
+import FinalResult from "./pages/GrandGame/FinalResult"
 
 import Input from "./components/Input"
 import RadioQuestionForm from "./components/Radio"
@@ -26,30 +26,6 @@ import './App.css'
 import { useState } from "react";
 
 export default function App({ ...props }) {
-
-  const onSubmit = async (content) => {
-    console.log("content: ", content);
-
-    const response = await fetch(
-      "http://localhost:3000/api/forms/CanadaCustomsInvoice",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ canadaCustomsInvoice: content }),
-      }
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        return data;
-      })
-      .catch((err) => console.log("Error: ", err));
-
-    console.log("Data Created on DB: ", response);
-  };
 
   return (
     <Router>
@@ -67,6 +43,8 @@ export default function App({ ...props }) {
         <Route path="/game4" element={<Game4 />} />
 
         <Route path="/grandgame" element={<GrandGame />} />
+
+        <Route path="/finalresult" element={<FinalResult />} />
 
         <Route path="/welcome" element={<Welcome />} />
         <Route path="/result" element={<Result />} />

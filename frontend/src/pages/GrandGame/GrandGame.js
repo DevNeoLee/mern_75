@@ -1,9 +1,9 @@
-import io from 'socket.io-client'
 
 import Erica0 from './GameErica/Erica0'
 import Erica1 from './GameErica/Erica1'
 import Erica2 from './GameErica/Erica2'
 import Erica3 from './GameErica/Erica3'
+import Erica4 from './GameErica/Erica4'
 
 import Norman0 from './GameNorman/Norman0'
 import Norman1 from './GameNorman/Norman1'
@@ -24,6 +24,9 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom"
 
 import { useEffect, useState } from 'react'
+
+import io from 'socket.io-client'
+
 
 export default function GrandGame() {
     // const roles = ['Erica', 'Pete', 'Norman']
@@ -52,8 +55,10 @@ export default function GrandGame() {
 
     const [ players, setPlayers ] = useState(['NormanA', 'NormanB', 'NormanC', 'Pete', 'Erica'])
 
+    const normanRoles = ['NormanA', 'NormanB', 'NormanC'];
+
     // new WebSocket(`wss://${window.location.host}`)
-    console.log()
+    // console.log()
 
     useEffect(() => {
         console.log('grandGame page begins!')
@@ -69,7 +74,7 @@ export default function GrandGame() {
         //////Socket///////////////////////////////////////////////////////////////////
         const socket = io()
         setSocket(socket)
-        console.log("socket connected: ")
+        console.log("socket connected: ", socket)
 
         socket.on("leaving", () => {
             console.log("someone leaving the room")
@@ -93,9 +98,9 @@ export default function GrandGame() {
 
     useEffect(() => {
         handleRoleChange(role)
-        // socket.emit('role')
     }, [role])
-
+    
+    // socket.emit('role')
 
     const giveRoleRandomly = () => {
         console.log('***************giveRoleRandomly clicked!**********')
@@ -103,14 +108,17 @@ export default function GrandGame() {
         setRole(role => ['Erica', 'Pete', 'NormanA', 'NormanB', 'NormanC'][Math.floor(Math.random()*3)])
         // setRole(role => '')
 
-        socket.emit("role")
+        // socket.emit("role")
         console.log('someone joined a room', typeof role)
         // /socket emit/////
+
 
         socket.emit("enter_room", 'hello entering', () => {
             console.log("you entered the room1")
             
         })
+
+        console.log('socket,,', socket)
     }
 
     const handleRoleChange = () => {
@@ -186,14 +194,15 @@ export default function GrandGame() {
         <Erica0 step={step} role setRole />,
         <Erica1 step={step}/>,
         <Erica2 ericaSendMessage={ericaSendMessage} round={round} ericaSendMessage2={ericaSendMessage2} handleChange={handleChange} handleChange2={handleChange2} handleChange3={handleChange3} handleChange4={handleChange4} ericaMessageForPete={JSON.stringify(ericaMessageForPete)} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} ericaHealth={ericaHealth} players={players}/>,
-        <Erica3 step={step}/>
+        <Erica3 step={step} ericaHealth={ericaHealth}/>,
+        <Erica4 step={step} ericaHealth={ericaHealth}/>
     ];
     
     const normans = [
         <Norman0 step={step} />,
         <Norman1 step={step} />,
         <Norman2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} normanHealth={normanHealth} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} role={role}/>,
-        <Norman3 step={step} />,
+        <Norman3 step={step} normanHealth={normanHealth}/>,
         <Norman4 step={step} />,
         <Norman5 step={step} />
     ];
@@ -202,7 +211,7 @@ export default function GrandGame() {
         <Pete0 step={step} />,
         <Pete1 step={step} />,
         <Pete2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} peteHealth={peteHealth} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} />,
-        <Pete3 step={step} />
+        <Pete3 step={step} peteHealth={peteHealth}/>
     ];
     
     const Buttons = () => (
@@ -246,13 +255,14 @@ export default function GrandGame() {
     return (
         <div className="main">
             <div className="gameframe">
+                {/* {ericas[3]} */}
             { role ?
                 <>
                     { role === 'Erica' ? ericas[step] : role === 'Pete' ? petes[step] : normans[step]}
                     { step !== 2 && <Buttons/> }
                 </>
                 :
-                    <Instruction giveRoleRandomly={giveRoleRandomly} setRole={setRole} />
+                    <Instruction giveRoleRandomly={giveRoleRandomly} setRole={setRole} normans={normanRoles}/>
             }
             </div>
         </div>

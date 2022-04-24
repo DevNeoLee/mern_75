@@ -6,6 +6,9 @@ import { HeartFill, HouseFill } from 'react-bootstrap-icons';
 import { Form, Button, ProgressBar } from "react-bootstrap";
 
 import Radio from "../../../components/Radio"
+import NormanPopup from '../../../components/NormanPopup';
+import NormanForm from '../../../components/NormanForm';
+import WaitModalNorman from '../../../components/WaitModalNorman';
 
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -24,6 +27,12 @@ export default function Norman2({ round, role, electricity, ericaMessageForNorma
     const [graphData, setGraphData] = useState([]);
     const [graphData2, setGraphData2] = useState([]);
 
+    const [popup, setPopup] = useState(false);
+    const [popForm, setPopForm] = useState(false);
+    const [waitEricaTime, setWaitEricaTime] = useState(true);
+    const [waitPopup, setWaitPopup] = useState(true)
+
+
     // const handleMouseEnter1 = () => {
     //     setGraphData([
     //               {
@@ -34,6 +43,15 @@ export default function Norman2({ round, role, electricity, ericaMessageForNorma
     //         },
     //     ])
     // }
+
+    const handleNormanForm = () => {
+
+    }
+
+    const handleWaitModal = () => {
+        console.log("wait Modal clicked!")
+        setWaitPopup(false)
+    }
 
     const getHouseChartData = () => {
 
@@ -127,6 +145,11 @@ export default function Norman2({ round, role, electricity, ericaMessageForNorma
 
     return (
         <>
+            <div className={popup ? `normanPopup` : `normanPopup normanPopClose`}><NormanPopup setPopup={setPopup} /></div>
+            <div className={popForm ? `normanForm` : `normanForm normanFormClose`}><NormanForm setPopForm={setPopForm} handleNormanForm={handleNormanForm}/></div>
+            <div className={waitPopup ? `waitModal` : `waitModal waitModalClose`}><WaitModalNorman handleWaitModal={handleWaitModal} /></div>
+
+
             <div className="gameBlockContainer">
                 <div className="leftContainer">
                     <div className="gameBlock3">
@@ -278,7 +301,7 @@ export default function Norman2({ round, role, electricity, ericaMessageForNorma
                             <Form>
                                 <Form.Group>
                                     <div className="gameQuestion">
-                                        <Form.Label htmlFor={`radio`}>You check flood risk indivation. What is your decision?</Form.Label>
+                                        <Form.Label htmlFor={`radio`}>You check flood risk infomation. What is your decision?</Form.Label>
                                         <Radio label='Stay' name="questionNorman2" />
                                         <Radio label='Evacuate' name="questionNorman2" />
                                         <Button>Submit</Button>

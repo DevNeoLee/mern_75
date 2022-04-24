@@ -22,72 +22,57 @@ export default function Erica3({ round, ericaHealth, ericaMessageForNorman, eric
 
     return (
         <>
-            <div className="gameUpperForm">
-                {transition((style, item) =>
-                    <animated.h2 style={style}>Round {round} Result</animated.h2>
-                )}
-            </div>
+        <div className="finalH2">
+            {transition((style, item) =>
+                <animated.h2 style={style}>Final Result</animated.h2>
+            )}
+        </div>
         <div className="resultWrapper">
             <div className="resultContainer">
                 {transition2((style, item) =>
-                    <animated.div style={style} className="resultLeft">
-                        <h3>Your Round Result</h3>
-                        <div style={style} className="personContainer">
-                            <img src="/erica.png" alt="role_person_image" />
-                        </div>
-                        <p>Your Risk Level to City: {ericaMessageForNorman}</p>
-                        <p>Your Message to Normans: {ericaMessageForNorman}</p>
-                        <p>Your Message to Pete: {ericaMessageForPete}</p>
-                        <p>Your Action Analysis: Your Response to the Flood Risk....</p>
-                        <p>
-                            Your Score: {ericaHealth}</p>
-                        <div className="gameProgressBlock">
-                            <ProgressBar now={ericaHealth} style={{ fontSize: "1.1rem", height: "27px", borderRadius: "5px 5px 0 0" }} variant="primary" label={`Score: ${ericaHealth} of 100`} />
-                            <div className="heartNorman"><HeartFill size={23} color="red" /></div>
-                        </div>
-                    </animated.div>
-                )}
-                {transition2((style, item) =>
-                    <animated.div style={style} className="resultRight">
-                        <h3>Whole Player Summary</h3>
+                    <animated.div style={style} className="finalResult">
+                        <h3>Player Summary</h3>
                         <Table striped bordered hover size="lg" responsive>
                             <thead>
                                 <tr>
                                     <th>Player</th>
                                     <th>Decision</th>
-                                    <th># of Players</th>
-                                    <th>Score</th>
+                                    {/* <th># of Players</th> */}
+                                    <th>Score Round1</th>
+                                    <th>Score Round2</th>
+                                    <th>Score Round3</th>
+                                    <th>Score Round4</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Erica</td>
                                     <td>risk scale</td>
-                                    <td>1</td>
+                                    {/* <td>1</td> */}
                                     <td>90</td>
                                 </tr>
                                 <tr>
                                     <td>Pete</td>
                                     <td>Keep Power</td>
-                                    <td>1</td>
+                                    {/* <td>1</td> */}
                                     <td>80</td>
                                 </tr>
                                 <tr>
                                     <td>Norman A</td>
                                     <td>Keep Power</td>
-                                    <td>1</td>
+                                    {/* <td>1</td> */}
                                     <td>80</td>
                                 </tr>
                                 <tr>
                                     <td>Norman B</td>
                                     <td>Keep Power</td>
-                                    <td>1</td>
+                                    {/* <td>1</td> */}
                                     <td>80</td>
                                 </tr>
                                 <tr>
                                     <td>Norman C</td>
                                     <td>Keep Power</td>
-                                    <td>1</td>
+                                    {/* <td>1</td> */}
                                     <td>80</td>
                                 </tr>
                             </tbody>

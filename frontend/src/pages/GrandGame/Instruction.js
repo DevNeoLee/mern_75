@@ -10,7 +10,7 @@ import { useTransition, useSpring, animated } from "react-spring";
 
 import { Form, Button, ProgressBar } from "react-bootstrap";
 
-export default function Instruction({giveRoleRandomly, setRole}) {
+export default function Instruction({giveRoleRandomly, setRole, normans}) {
 
   const transition = useTransition(true, {
     from: { x: 300, y: 0, opacity: 0 },
@@ -41,8 +41,7 @@ export default function Instruction({giveRoleRandomly, setRole}) {
     setRole(role)
   }
 
-  const normans = ['NormanA', 'NormanB', 'NormanC'];
-
+  
   return (
       <>
         <div className="gameUpperForm">

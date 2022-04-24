@@ -51,7 +51,6 @@ export default function FormPreGame() {
           type="button"
           onClick={() => {
             setStep(step - 1);
-            console.log(step)
           }}
         >
           BACK
@@ -70,7 +69,6 @@ export default function FormPreGame() {
           type="button"
           onClick={() => {
             setStep(step + 1);
-            console.log("Current Game Page: ", step + 1)
           }}
         >
           NEXT
@@ -78,7 +76,6 @@ export default function FormPreGame() {
       )}
     </section>
   );
-  console.log(data)
 
   return (
     <>

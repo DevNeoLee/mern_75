@@ -6,6 +6,9 @@ import { HeartFill, HouseFill, HospitalFill, LightningFill } from 'react-bootstr
 import { Form, Button, ProgressBar } from "react-bootstrap";
 
 import Radio from "../../../components/Radio"
+import EricaPopup from '../../../components/EricaPopup';
+import WaitModalErica from '../../../components/WaitModalErica';
+
 
 import React, { PureComponent } from 'react';
 import { AreaChart, Area, BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
@@ -23,6 +26,10 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
     const [hoverBH, setHoverBH] = useState(false);
     const [graphData, setGraphData] = useState([]);
     const [graphData2, setGraphData2] = useState([]);
+
+    const [popup, setPopup] = useState(true);
+    const [waitNPTime, setWaitNPTime] = useState(true);
+    const [waitPopup, setWaitPopup] = useState(false)
 
     // const handleMouseEnter1 = () => {
     //     setGraphData([
@@ -43,7 +50,10 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
         return houseChartdata;
     }
 
-    console.log('getHouse: ', JSON.stringify(getHouseChartData))
+    const handleWaitModal = () => {
+        console.log("wait Modal clicked!")
+        setWaitPopup(false)
+    }
 
     const handleMouseEnter1 = () => {
         setGraphData([
@@ -126,7 +136,10 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
     }
 
     return (
-        <>
+        <>  
+            <div className={ popup ? `ericaPopup` : `ericaPopup ericaPopClose`}><EricaPopup setPopup={setPopup} /></div>
+            <div className={waitPopup ? `waitModal` : `waitModal waitModalClose`}><WaitModalErica handleWaitModal={handleWaitModal} /></div>
+
             <div className="gameBlockContainerErica">
                 <div className="topContainerErica">
                     <div className="leftContainerErica">
@@ -250,7 +263,7 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                     </div>
                 </div>
                 <div className="gameProgressBlockErica">
-                    <ProgressBar now={ericaHealth} style={{ fontSize: "1.1rem", height: "27px", width: "465px", backgroundColor: "black", borderRadius: "5px 5px 5px 0" }} variant="primary" label={`Score: ${ericaHealth} of 100`} />
+                    <ProgressBar now={ericaHealth} style={{ fontSize: "1.1rem", height: "27px", width: "100%", backgroundColor: "black", borderRadius: "5px 5px 5px 0" }} variant="primary" label={`Score: ${ericaHealth} of 100`} />
                     <div className="heartNorman"><HeartFill size={23} color="red" /></div>
                     <div className="titleCoverupErica"></div>
                 </div>
@@ -266,24 +279,24 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                                 <div className="ericaFormInsideSection">
                                     <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section1">
                                         <Form.Label>Level of Flood Warning</Form.Label>
-                                        <Form.Select aria-label="Default select example" onChange={handleChange2}>
-                                            <option>Level of Flood Warning</option>
-                                            <option value="1">Safe</option>
-                                            <option value="2">Caution</option>
-                                            <option value="3">Evacuation recommended</option>
-                                            <option value="4">Evacuate immediately</option>
-                                        </Form.Select>
+                                            <Form.Control required as="select" name="source" onChange={handleChange2}>
+                                                <option value="">Level of Flood Warning</option>
+                                                <option value="1">Safe</option>
+                                                <option value="2">Caution</option>
+                                                <option value="3">Evacuation recommended</option>
+                                                <option value="4">Evacuate immediately</option>
+                                            </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section2">
                                         <Form.Label>Message to Power Factory</Form.Label>
-                                        <Form.Control as="textarea" rows={3} onChange={handleChange} />
+                                        <Form.Control required as="textarea" rows={3} onChange={handleChange} />
                                     </Form.Group>
                                 </div>
 
                                 <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section3">
                                     <Form.Label>Message to Citizen</Form.Label>
-                                    <Form.Control as="textarea" rows={3} onChange={handleChange} className="mb-3"/>
+                                    <Form.Control required as="textarea" rows={3} onChange={handleChange} className="mb-3"/>
                                     <Button type="submit">Send Message to the City</Button>
                                 </Form.Group>
                             </Form>
