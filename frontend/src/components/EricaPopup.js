@@ -24,7 +24,7 @@ export default function EricaPopup({setPopup}) {
         <div className="">
             {transition2((style, item) =>
                 <animated.div style={style} className="roleframe">
-                    <div style={style} className="personContainer">
+                    <div style={style} className="ericaPopupPerson">
                         <img src="/erica.png" alt="role_person_image" />
                         {/* <ProgressBar now={100} animated variant="primary" />
                         <div className="heartRole"><HeartFill size={24} color="red" /></div> */}

@@ -31,16 +31,16 @@ export default function WaitModalPete({ handleWaitModal }) {
             {transition2((style, item) =>
                 <animated.div style={style} className="roleframe">
                     <p>
-                        We would wait for Erica's Message First, meantime, please hover over the your house, road to see if the evacuation is nessary and if it is, which way would be best for you based on the information you researched.</p>
+                        We would wait for Erica's Message First, meantime, please hover over the your house and road to see if the evacuation would be the right choice and if it is, which way would be best for you based on the information you researched.</p>
 
                     <div className="spinner">
-                        <div className="">
+                        <div className="spinnerPerson">
                             <img src="/erica.png" width="100px" />
                         </div>
                         <Spinner animation="grow" variant="info" size="sm" />
                         <Spinner animation="grow" variant="info" size="sm" />
                         <Spinner animation="grow" variant="info" size="sm" />
-                        <div className="">
+                        <div className="spinnerPerson">
                             <img src="/pete.png" width="100px" />
                         </div>
                     </div>

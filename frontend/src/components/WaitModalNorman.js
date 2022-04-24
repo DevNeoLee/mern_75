@@ -29,16 +29,16 @@ export default function WaitModalNorman({ handleWaitModal }) {
             {transition2((style, item) =>
                 <animated.div style={style} className="roleframe">
                     <p>
-                        Now, Erica would wait for Pete and Norman's Choice Submit for now, please wait up to 15 ses.</p>
+                        We would wait for Erica's Message First, meantime, please hover over the your house and road to see if the evacuation would be the right choice and if it is, which way would be best for you based on the information you researched.</p>
 
                     <div className="spinner">
-                        <div className="">
+                        <div className="spinnerPerson">
                             <img src="/erica.png" width="100px" />
                         </div>
                         <Spinner animation="grow" variant="info" size="sm" />
                         <Spinner animation="grow" variant="info" size="sm" />
                         <Spinner animation="grow" variant="info" size="sm" />
-                        <div className="">
+                        <div className="spinnerPerson">
                             <img src="/norman.png" width="100px" />
                         </div>
                     </div>

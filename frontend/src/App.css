@@ -1502,8 +1502,28 @@ h2 {
   align-items: center;
 }
 
+.spinnerPerson {
+  border-radius: 5px;
+  background-color: #1e90ff;
+  width: 100px;
+  overflow: hidden;
+}
+
+.spinnerPerson img {
+  width: 100%;
+}
 /* Result Page */
 
+.ericaPopupPerson {
+  width: 200px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.ericaPopupPerson img {
+  width: 100%;
+}
 .resultWrapper {
   display: flex;
   justify-content: center;

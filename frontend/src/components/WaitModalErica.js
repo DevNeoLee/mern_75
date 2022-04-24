@@ -32,17 +32,17 @@ export default function WaitModalErica({ handleWaitModal }) {
                         Now, Erica would wait for Pete and Norman's Choice Submit for now, please wait up to 15 ses.</p>
 
                         <div className="spinner">
-                            <div className="">
-                                <img src="/pete.png" width="100px" />
+                            <div className="spinnerPerson">
+                                <img src="/pete.png" />
                             </div>
-                            <div className="">
-                                <img src="/norman.png" width="100px" />
+                            <div className="spinnerPerson">
+                                <img src="/norman.png" />
                             </div>
                             <Spinner animation="grow" variant="info" size="sm" />
                             <Spinner animation="grow" variant="info" size="sm" />
                             <Spinner animation="grow" variant="info" size="sm" />
                           
-                            <div className="">
+                            <div className="spinnerPerson">
                                 <img src="/erica.png" width="100px" />
                             </div>
                         </div>
