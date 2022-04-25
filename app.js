@@ -12,7 +12,7 @@ app.use(cors());
 
 
 const io = require('socket.io')(server, 
-    // { serveClient: false }
+    { serveClient: false }
     )
 
 const db = require('./config/keys')
@@ -69,6 +69,21 @@ io.on("connection", socket => {
         console.log("socket.role: ", role)
         socket.role = role
         console.log("socket.role: ", socket.role)
+    })
+
+    socket.on('erica_message', (msg) => {
+        let room = io.sockets.adapter.rooms.get('room1')
+        console.log('messages from Erica: ', msg)
+        io.emit('erica_message', msg)
+        socket.to('room1').emit('welcome', msg)
+        socket.to('room1').emit('welcome')
+
+        room && console.log("몇: ", room.size)
+        console.log("방들: ", socket.rooms)
+        room && console.log("몇: ", room.size)
+        console.log("사람들: ", io.sockets.adapter.rooms.get('room1').size)
+        console.log('who joined: ', socket.id)
+
     })
 
     //메세지와 동시에 펑션을 'done'을 받아서 실행할수 있음.

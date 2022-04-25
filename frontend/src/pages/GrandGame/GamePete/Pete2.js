@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Pete2({ round, electricity, peteMessageForNorman, step, normanQuestion, peteHealth }) {
+export default function Pete2({ round, electricity, messageToPete, step, normanQuestion, peteHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -345,7 +345,7 @@ export default function Pete2({ round, electricity, peteMessageForNorman, step, 
                                     <div className="alertMessagePete">
                                         <span>Alert! Message from pete</span>
                                         <p className="">
-                                            {/* {peteMessageForNorman} */}
+                                            {messageToPete}
                                         </p>
                                     </div>
                                 </div>

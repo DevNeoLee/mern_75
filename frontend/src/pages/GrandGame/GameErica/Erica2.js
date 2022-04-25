@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, round, handleChange, handleChange2, handleChange3, handleChange4, ericaMessageForPete, ericaHealth, electricity, ericaMessageForNorman, step, normanQuestion, normanHealth }) {
+export default function Erica2({ players, handleSubmitErica, round, handleChangeWarning, handleChangeMessageToNorman, handleChangeMessageToPete, levelOfWarning, messageToNorman, messageToPete, ericaHealth, electricity, step, normanQuestion, normanHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -275,35 +275,34 @@ export default function Erica2({ players, ericaSendMessage, ericaSendMessage2, r
                     </div>
                     <div className="gameBlock6">
                         <div className="ericaform">
-                            <Form className="ericaFormInsideWrapper" onSubmit={ericaSendMessage}>
+                            <Form className="ericaFormInsideWrapper" onSubmit={handleSubmitErica}>
                                 <div className="ericaFormInsideSection">
                                     <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section1">
                                         <Form.Label>Level of Flood Warning</Form.Label>
-                                            <Form.Control required as="select" name="source" onChange={handleChange2}>
+                                        <Form.Control required as="select" name="source" onChange={handleChangeWarning} value={levelOfWarning}>
                                                 <option value="">Level of Flood Warning</option>
-                                                <option value="1">Safe</option>
-                                                <option value="2">Caution</option>
-                                                <option value="3">Evacuation recommended</option>
-                                                <option value="4">Evacuate immediately</option>
+                                                <option value="Safe">Safe</option>
+                                                <option value="Caution">Caution</option>
+                                                <option value="Evacuation recommended">Evacuation recommended</option>
+                                                <option value="Evacuate immediately">Evacuate immediately</option>
                                             </Form.Control>
                                     </Form.Group>
 
                                     <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section2">
                                         <Form.Label>Message to Power Factory</Form.Label>
-                                        <Form.Control required as="textarea" rows={3} onChange={handleChange} />
+                                        <Form.Control required as="textarea" rows={3} onChange={handleChangeMessageToPete} value={messageToPete}/>
                                     </Form.Group>
                                 </div>
 
                                 <Form.Group className="mb-3" controlId="exampleTextAreaErica" id="erica_form_section3">
                                     <Form.Label>Message to Citizen</Form.Label>
-                                    <Form.Control required as="textarea" rows={3} onChange={handleChange} className="mb-3"/>
+                                    <Form.Control required as="textarea" rows={3} onChange={handleChangeMessageToNorman} value={messageToNorman} className="mb-3"/>
                                     <Button type="submit">Send Message to the City</Button>
                                 </Form.Group>
                             </Form>
                         </div>
                     </div>
-                </div>
-               
+                </div>     
             </div>
         </>
     )

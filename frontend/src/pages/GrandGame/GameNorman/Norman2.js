@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Norman2({ round, role, electricity, ericaMessageForNorman, step, normanQuestion, normanHealth }) {
+export default function Norman2({ round, role, electricity, messageToNorman, step, normanQuestion, normanHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -331,7 +331,7 @@ export default function Norman2({ round, role, electricity, ericaMessageForNorma
                                     <div className="alertMessage">
                                         <span>Alert! Message from Erica</span>
                                         <p className="">
-                                            {/* {ericaMessageForNorman} */}
+                                            {messageToNorman }
                                         </p>
                                     </div>
                                 </div>

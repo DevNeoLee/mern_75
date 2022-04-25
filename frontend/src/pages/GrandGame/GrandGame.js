@@ -37,9 +37,34 @@ export default function GrandGame() {
 
     const [step, setStep] = useState(0) 
 
-    const [ericaMessageForNorman, setEricaMessageForNorman] = useState({customMessageNorman: 'norman...', levelOfWarning: 0})
+    const [messages, setMessages] = useState({
+        round1: {
+            toNorman: [],
+            toPete: [],
+            levelOfWarning: []
+        },
+        round2: {
+            toNorman: [],
+            toPete: [],
+            levelOfWarning: []
+        },
+        round3: {
+            toNorman: [],
+            toPete: [],
+            levelOfWarning: []
+        },
+        round4: {
+            toNorman: [],
+            toPete: [],
+            levelOfWarning: []
+        },
+    })
 
-    const [ericaMessageForPete, setEricaMessageForPete] = useState({ customMessagePete: 'pete...', levelOfWarning: 0 })
+    const [messageToNorman, setMessageToNorman] = useState('')
+
+    const [messageToPete, setMessageToPete] = useState('')
+
+    const [levelOfWarning, setLevelOfWarning] = useState('')
         
     const [socket, setSocket] = useState(null)
 
@@ -53,7 +78,7 @@ export default function GrandGame() {
 
     const [electricity, setElectricity] = useState(true)
 
-    const [ players, setPlayers ] = useState(['NormanA', 'NormanB', 'NormanC', 'Pete', 'Erica'])
+    const [ players, setPlayers ] = useState([])
 
     const normanRoles = ['NormanA', 'NormanB', 'NormanC'];
 
@@ -65,10 +90,10 @@ export default function GrandGame() {
     }, [])
 
     useEffect(() => {
-        console.log("ericaMessage to norman:", ericaMessageForNorman.customMessageNorman)
-        console.log("ericaMessage2 to pete:", ericaMessageForPete.customMessagePete)
+        console.log("ericaMessage to norman:", messageToNorman)
+        console.log("ericaMessage to pete:", messageToPete)
 
-    }, [ericaMessageForNorman, ericaMessageForPete])
+    }, [messageToNorman, messageToPete])
 
     const connectToSocket = () => {
         //////Socket///////////////////////////////////////////////////////////////////
@@ -83,6 +108,32 @@ export default function GrandGame() {
         socket.on("left", () => {
             console.log("someone left the room")
         })
+
+        socket.on("erica_message", (msg) => {
+            console.log('message received: ', msg)
+
+            setMessageToNorman(msg.messageToNorman)
+            setMessageToPete(msg.messageToPete)
+
+
+            if (role === 'Norman') {
+                setMessageToNorman(msg.messageToNorman)
+                console.log('norman message window!', msg.messageToNorman)
+            }
+
+            if (role === 'Pete') {
+                setMessageToPete(msg.messageToPete)
+                console.log('pete message window!', msg.messageToPete)
+
+            }
+        })
+
+        socket.on("room1", msg => {
+            console.log('room1 message', msg)
+
+        })
+
+
     }
 
     useEffect(()=>{
@@ -95,6 +146,9 @@ export default function GrandGame() {
         }
     }, [setSocket])
 
+    useEffect(() => {
+       console.log("messages: ", JSON.stringify(messages))
+    }, [messages])
 
     useEffect(() => {
         handleRoleChange(role)
@@ -147,53 +201,91 @@ export default function GrandGame() {
     }
 
     //erica communicating through SOCKET  + to do: save to MongoDB
-    const ericaSendMessage = (e) => {
-        console.log('erica sent message!:')
+    const handleSubmitErica = (e) => {
+        console.log('erica just submitted her messages:')
         e.preventDefault()
 
-        console.log("Data from Erica to Norman: ", JSON.stringify(ericaMessageForNorman))
-        // socket interaction
-        socket.send(JSON.stringify(ericaMessageForNorman))
-    } 
+        const messages = {
+            messageToNorman, messageToPete, levelOfWarning
+        }
 
-    //erica communicating through SOCKET  + to do: save to MongoDB
-    const ericaSendMessage2 = (e) => {
-        console.log('erica sent message!:')
-        e.preventDefault()
-
-        console.log("Data from Erica to Pete: ", JSON.stringify(ericaMessageForPete))
         // socket interaction
-        socket.send(JSON.stringify(ericaMessageForPete))
+        socket.emit('erica_message', messages)
+
+        console.log("current messages! Pete: " + messageToPete + "Norman: " + messageToNorman + "LevelOfWarning: " + levelOfWarning)
+        switch(round) {
+            case 1:
+                setMessages(prevState => ({
+                    ...prevState, round1: {toNorman: [...prevState.round1.toNorman, messageToNorman],
+                                              toPete: [...prevState.round1.toPete, messageToPete],
+                                              levelOfWarning: [...prevState.round1.levelOfWarning, levelOfWarning]
+                                            }       
+                                        
+                }))
+                break;
+            case 2:
+                setMessages(prevState => ({
+                    ...prevState, round1: {
+                        toNorman: [...prevState.round1.toNorman, messageToNorman],
+                        toPete: [...prevState.round1.toPete, messageToPete],
+                        levelOfWarning: [...prevState.round1.levelOfWarning, levelOfWarning]
+                    }
+
+                }))
+                break;
+            case 3:
+                setMessages(prevState => ({
+                    ...prevState, round1: {
+                        toNorman: [...prevState.round1.toNorman, messageToNorman],
+                        toPete: [...prevState.round1.toPete, messageToPete],
+                        levelOfWarning: [...prevState.round1.levelOfWarning, levelOfWarning]
+                    }
+
+                }))
+                break;
+            case 4:
+                setMessages(prevState => ({
+                    ...prevState, round1: {
+                        toNorman: [...prevState.round1.toNorman, messageToNorman],
+                        toPete: [...prevState.round1.toPete, messageToPete],
+                        levelOfWarning: [...prevState.round1.levelOfWarning, levelOfWarning]
+                    }
+
+                }))
+                break;
+        }
+
+        setLevelOfWarning('')
+        setMessageToNorman('')
+        setMessageToPete('')
+        
+        console.log("erica_messages on frontend: ", JSON.stringify(messages.round1))
+
     } 
 
     const handleClick = () => {
         console.log("!final click!: ");
     };
 
-    const handleChange = (e) => {
-        ericaMessageForNorman(prev => ({ ...prev.levelOfWarning, customMessage: e.target.value}))
-        console.log(e.target.value)
+    const handleChangeWarning = (e) => {
+        setLevelOfWarning(e.target.value)
+        console.log("Level of wanrning: ", e.target.value)
     }
 
-    const handleChange2 = (e) => {
-        ericaMessageForNorman(prev => ({...prev.customMessage, levelOfWarning: e.target.value}))
-        console.log(e.target.value)
+    const handleChangeMessageToNorman = (e) => {
+        setMessageToNorman(e.target.value)
+        console.log("Message To Norman: ", e.target.value)
     }
 
-    const handleChange3 = (e) => {
-        ericaMessageForPete(prev => ({ ...prev.levelOfWarning, customMessage: e.target.value }))
-        console.log(e.target.value)
-    }
-
-    const handleChange4 = (e) => {
-        ericaMessageForPete(prev => ({ ...prev.customMessage, levelOfWarning: e.target.value }))
-        console.log(e.target.value)
+    const handleChangeMessageToPete = (e) => {
+        setMessageToPete(e.target.value)
+        console.log("Message To Pete: ", e.target.value)
     }
 
     const ericas = [
         <Erica0 step={step} role setRole />,
         <Erica1 step={step}/>,
-        <Erica2 ericaSendMessage={ericaSendMessage} round={round} ericaSendMessage2={ericaSendMessage2} handleChange={handleChange} handleChange2={handleChange2} handleChange3={handleChange3} handleChange4={handleChange4} ericaMessageForPete={JSON.stringify(ericaMessageForPete)} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} ericaHealth={ericaHealth} players={players}/>,
+        <Erica2 handleSubmitErica={handleSubmitErica} round={round} handleChangeWarning={handleChangeWarning} handleChangeMessageToNorman={handleChangeMessageToNorman} handleChangeMessageToPete={handleChangeMessageToPete} levelOfWarning={levelOfWarning} messageToPete={messageToPete} messageToNorman={messageToNorman} ericaHealth={ericaHealth} players={players}/>,
         <Erica3 step={step} ericaHealth={ericaHealth}/>,
         <Erica4 step={step} ericaHealth={ericaHealth}/>
     ];
@@ -201,7 +293,7 @@ export default function GrandGame() {
     const normans = [
         <Norman0 step={step} />,
         <Norman1 step={step} />,
-        <Norman2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} normanHealth={normanHealth} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} role={role}/>,
+        <Norman2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} normanHealth={normanHealth} messageToNorman={messageToNorman} role={role}/>,
         <Norman3 step={step} normanHealth={normanHealth}/>,
         <Norman4 step={step} />,
         <Norman5 step={step} />
@@ -210,7 +302,7 @@ export default function GrandGame() {
     const petes = [
         <Pete0 step={step} />,
         <Pete1 step={step} />,
-        <Pete2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} peteHealth={peteHealth} ericaMessageForNorman={JSON.stringify(ericaMessageForNorman)} />,
+        <Pete2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} peteHealth={peteHealth} messageToPete={messageToPete} />,
         <Pete3 step={step} peteHealth={peteHealth}/>
     ];
     
