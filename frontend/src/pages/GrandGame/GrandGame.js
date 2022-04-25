@@ -64,9 +64,14 @@ export default function GrandGame() {
 
     const [messageToPete, setMessageToPete] = useState('')
 
+    const [messageFromErica, setMessageFromErica] = useState('')
+
     const [levelOfWarning, setLevelOfWarning] = useState('')
         
     const [socket, setSocket] = useState(null)
+
+    const [popForm, setPopForm] = useState(false);
+    const [waitPopupErica, setWaitPopupErica] = useState(false)
 
     const [normanQuestion, setNormanQuestion] = useState(false)
 
@@ -95,6 +100,7 @@ export default function GrandGame() {
 
     }, [messageToNorman, messageToPete])
 
+   
     const connectToSocket = () => {
         //////Socket///////////////////////////////////////////////////////////////////
         const socket = io()
@@ -112,28 +118,20 @@ export default function GrandGame() {
         socket.on("erica_message", (msg) => {
             console.log('message received: ', msg)
 
-            setMessageToNorman(msg.messageToNorman)
-            setMessageToPete(msg.messageToPete)
+            setMessageFromErica(msg)
+            console.log('norman message window!', msg)
+            setInterval(() => {
+                setPopForm(true)
+                setWaitPopupErica(true)
+            }, 3000);
 
-
-            if (role === 'Norman') {
-                setMessageToNorman(msg.messageToNorman)
-                console.log('norman message window!', msg.messageToNorman)
-            }
-
-            if (role === 'Pete') {
-                setMessageToPete(msg.messageToPete)
-                console.log('pete message window!', msg.messageToPete)
-
-            }
-        })
-
-        socket.on("room1", msg => {
-            console.log('room1 message', msg)
 
         })
 
+        // socket.on("room1", msg => {
+        //     console.log('room1 message', msg)
 
+        // })
     }
 
     useEffect(()=>{
@@ -222,6 +220,11 @@ export default function GrandGame() {
                                             }       
                                         
                 }))
+
+                setLevelOfWarning('')
+                setMessageToNorman('')
+                setMessageToPete('')
+
                 break;
             case 2:
                 setMessages(prevState => ({
@@ -232,6 +235,11 @@ export default function GrandGame() {
                     }
 
                 }))
+
+                setLevelOfWarning('')
+                setMessageToNorman('')
+                setMessageToPete('')
+
                 break;
             case 3:
                 setMessages(prevState => ({
@@ -242,6 +250,11 @@ export default function GrandGame() {
                     }
 
                 }))
+
+                setLevelOfWarning('')
+                setMessageToNorman('')
+                setMessageToPete('')
+
                 break;
             case 4:
                 setMessages(prevState => ({
@@ -252,12 +265,15 @@ export default function GrandGame() {
                     }
 
                 }))
+
+                setLevelOfWarning('')
+                setMessageToNorman('')
+                setMessageToPete('')
+
                 break;
         }
 
-        setLevelOfWarning('')
-        setMessageToNorman('')
-        setMessageToPete('')
+       
         
         console.log("erica_messages on frontend: ", JSON.stringify(messages.round1))
 
@@ -285,7 +301,7 @@ export default function GrandGame() {
     const ericas = [
         <Erica0 step={step} role setRole />,
         <Erica1 step={step}/>,
-        <Erica2 handleSubmitErica={handleSubmitErica} round={round} handleChangeWarning={handleChangeWarning} handleChangeMessageToNorman={handleChangeMessageToNorman} handleChangeMessageToPete={handleChangeMessageToPete} levelOfWarning={levelOfWarning} messageToPete={messageToPete} messageToNorman={messageToNorman} ericaHealth={ericaHealth} players={players}/>,
+        <Erica2 setWaitPopupErica={setWaitPopupErica} waitPopupErica={waitPopupErica} handleSubmitErica={handleSubmitErica} round={round} handleChangeWarning={handleChangeWarning} handleChangeMessageToNorman={handleChangeMessageToNorman} handleChangeMessageToPete={handleChangeMessageToPete} levelOfWarning={levelOfWarning} messageToPete={messageToPete} messageToNorman={messageToNorman} ericaHealth={ericaHealth} players={players}/>,
         <Erica3 step={step} ericaHealth={ericaHealth}/>,
         <Erica4 step={step} ericaHealth={ericaHealth}/>
     ];
@@ -293,7 +309,7 @@ export default function GrandGame() {
     const normans = [
         <Norman0 step={step} />,
         <Norman1 step={step} />,
-        <Norman2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} normanHealth={normanHealth} messageToNorman={messageToNorman} role={role}/>,
+        <Norman2 step={step} popForm={popForm} setPopForm={setPopForm} round={round} electricity={electricity} normanQuestion={normanQuestion} normanHealth={normanHealth} messageToNorman={messageToNorman} role={role} messageFromErica = { messageFromErica}/>,
         <Norman3 step={step} normanHealth={normanHealth}/>,
         <Norman4 step={step} />,
         <Norman5 step={step} />
@@ -302,7 +318,7 @@ export default function GrandGame() {
     const petes = [
         <Pete0 step={step} />,
         <Pete1 step={step} />,
-        <Pete2 step={step} round={round} electricity={electricity} normanQuestion={normanQuestion} peteHealth={peteHealth} messageToPete={messageToPete} />,
+        <Pete2 step={step} popForm={popForm} setPopForm={setPopForm} round={round} electricity={electricity} normanQuestion={normanQuestion} peteHealth={peteHealth} messageToPete={messageToPete} messageFromErica={messageFromErica}/>,
         <Pete3 step={step} peteHealth={peteHealth}/>
     ];
     

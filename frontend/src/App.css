@@ -943,14 +943,14 @@ h2 {
 }
 
 .alertMessage {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: rgb(208, 3, 3);
   text-align: center;
 }
 
 .alertMessagePete {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: rgb(27, 3, 208);
   text-align: center;
@@ -1702,6 +1702,20 @@ h2 {
   .bottomContainerErica {
     padding-left: 0rem;
   }
+
+  .alertMessage {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(208, 3, 3);
+    text-align: left;
+  }
+  
+  .alertMessagePete {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: rgb(27, 3, 208);
+    text-align: left;
+  }
 }
 
 @media(max-width: 800px) {
@@ -1844,7 +1858,7 @@ h2 {
       }
 
       .comingMessage {
-        padding: 1rem 2rem;
+        padding: 1rem 1rem;
         border-radius: 15px;
         top: 10px;
         left: 0px;

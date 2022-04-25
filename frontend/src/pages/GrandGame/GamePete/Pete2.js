@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Pete2({ round, electricity, messageToPete, step, normanQuestion, peteHealth }) {
+export default function Pete2({ popForm, setPopForm, messageFromErica, round, electricity, messageToPete, step, normanQuestion, peteHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -28,7 +28,6 @@ export default function Pete2({ round, electricity, messageToPete, step, normanQ
     const [graphData2, setGraphData2] = useState([]);
 
     const [popup, setPopup] = useState(false);
-    const [popForm, setPopForm] = useState(false);
     const [waitPopup, setWaitPopup] = useState(true)
     const [waitEricaTime, setWaitEricaTime] = useState(true);
 
@@ -343,10 +342,12 @@ export default function Pete2({ round, electricity, messageToPete, step, normanQ
                                 <div className="phonebox"><img src="/phone_side.png" width="520px" /></div>
                                 <div className="comingMessage">
                                     <div className="alertMessagePete">
-                                        <span>Alert! Message from pete</span>
                                         <p className="">
-                                            {messageToPete}
+                                            {messageFromErica.messageToPete}
                                         </p>
+                                        {messageFromErica && <p className="">
+                                            Current Level of Warning: {messageFromErica.levelOfWarning}
+                                        </p>}
                                     </div>
                                 </div>
                             </div>

@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Erica2({ players, handleSubmitErica, round, handleChangeWarning, handleChangeMessageToNorman, handleChangeMessageToPete, levelOfWarning, messageToNorman, messageToPete, ericaHealth, electricity, step, normanQuestion, normanHealth }) {
+export default function Erica2({ waitPopupErica, setWaitPopupErica, players, handleSubmitErica, round, handleChangeWarning, handleChangeMessageToNorman, handleChangeMessageToPete, levelOfWarning, messageToNorman, messageToPete, ericaHealth, electricity, step, normanQuestion, normanHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -29,7 +29,7 @@ export default function Erica2({ players, handleSubmitErica, round, handleChange
 
     const [popup, setPopup] = useState(true);
     const [waitNPTime, setWaitNPTime] = useState(true);
-    const [waitPopup, setWaitPopup] = useState(false)
+   
 
     // const handleMouseEnter1 = () => {
     //     setGraphData([
@@ -52,7 +52,7 @@ export default function Erica2({ players, handleSubmitErica, round, handleChange
 
     const handleWaitModal = () => {
         console.log("wait Modal clicked!")
-        setWaitPopup(false)
+        setWaitPopupErica(false)
     }
 
     const handleMouseEnter1 = () => {
@@ -138,7 +138,7 @@ export default function Erica2({ players, handleSubmitErica, round, handleChange
     return (
         <>  
             <div className={ popup ? `ericaPopup` : `ericaPopup ericaPopClose`}><EricaPopup setPopup={setPopup} /></div>
-            <div className={waitPopup ? `waitModal` : `waitModal waitModalClose`}><WaitModalErica handleWaitModal={handleWaitModal} /></div>
+            <div className={waitPopupErica ? `waitModal` : `waitModal waitModalClose`}><WaitModalErica handleWaitModal={handleWaitModal} /></div>
 
             <div className="gameBlockContainerErica">
                 <div className="topContainerErica">

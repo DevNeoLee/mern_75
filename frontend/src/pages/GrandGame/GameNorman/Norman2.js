@@ -17,7 +17,7 @@ import { Link } from "react-router-dom"
 
 import { data } from './../dataGame'
 
-export default function Norman2({ round, role, electricity, messageToNorman, step, normanQuestion, normanHealth }) {
+export default function Norman2({ popForm, setPopForm, messageFromErica, round, role, electricity, messageToNorman, step, normanQuestion, normanHealth }) {
 
     const [hover1, setHover1] = useState(false);
     const [hover2, setHover2] = useState(false);
@@ -28,7 +28,6 @@ export default function Norman2({ round, role, electricity, messageToNorman, ste
     const [graphData2, setGraphData2] = useState([]);
 
     const [popup, setPopup] = useState(false);
-    const [popForm, setPopForm] = useState(false);
     const [waitEricaTime, setWaitEricaTime] = useState(true);
     const [waitPopup, setWaitPopup] = useState(true)
 
@@ -329,10 +328,12 @@ export default function Norman2({ round, role, electricity, messageToNorman, ste
                                 <div className="phonebox"><img src="/phone_side.png" width="520px"/></div>
                                 <div className="comingMessage">
                                     <div className="alertMessage">
-                                        <span>Alert! Message from Erica</span>
                                         <p className="">
-                                            {messageToNorman }
+                                            {messageFromErica.messageToNorman}
                                         </p>
+                                        {messageFromErica && <p className="">
+                                            Current Level of Warning: {messageFromErica.levelOfWarning}
+                                        </p>}
                                     </div>
                                 </div>
                             </div>
